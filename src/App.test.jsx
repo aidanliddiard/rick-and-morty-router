@@ -8,6 +8,7 @@ describe('App', () => {
     screen.getByText(/loading.../i);
 
     await screen.findByText(/Morty Smith/i);
+    await screen.findByAltText(/Image of Morty Smith/i);
     screen.debug();
   });
 });
