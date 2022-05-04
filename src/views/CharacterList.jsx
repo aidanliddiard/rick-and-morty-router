@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useState } from 'react';
-import { useHistory, useLocation } from 'react-router-dom';
+import { useHistory, useLocation, Link } from 'react-router-dom';
 import fetchCharacters from '../services/characters';
 
 export default function CharacterList() {
@@ -33,26 +33,31 @@ export default function CharacterList() {
         <option value="genderless">Genderless</option>
         <option value="unknown">Unknown</option>
       </select>
-      {characters.map((character) => (
-        <div
-          key={character.id}
-          style={{
-            display: 'flex',
-            backgroundColor: 'beige',
-            flexDirection: 'column',
-            alignItems: 'center',
-            justifyContent: 'center',
-            width: '350px',
-            border: '1px solid black',
-            paddingBottom: '20px',
-            marginBottom: '10px',
-            marginRight: '10px',
-          }}
-        >
-          <h3>{character.name}</h3>
-          <img src={character.image} alt={`Image of ${character.name}`} />
-        </div>
-      ))}
+      <div style={{ display: 'flex', flexDirection: 'row', flexWrap: 'wrap' }}>
+        {characters.map((character) => (
+          <div
+            key={character.id}
+            style={{
+              display: 'flex',
+              backgroundColor: 'beige',
+              flexDirection: 'column',
+              alignItems: 'center',
+              justifyContent: 'center',
+              width: '350px',
+              border: '1px solid black',
+              paddingBottom: '20px',
+              marginBottom: '10px',
+              marginTop: '10px',
+              marginRight: '10px',
+            }}
+          >
+            <Link to={`/character/${character.id}`}>
+              <h3>{character.name}</h3>
+            </Link>
+            <img src={character.image} alt={`Image of ${character.name}`} />
+          </div>
+        ))}
+      </div>
     </>
   );
 }
