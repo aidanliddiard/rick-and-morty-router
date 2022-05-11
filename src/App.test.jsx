@@ -4,7 +4,7 @@ import userEvent from '@testing-library/user-event';
 import App from './App';
 
 describe('App', () => {
-  it('renders Rick and Morty characters', async () => {
+  it('renders Rick and Morty characters and clicks on Morty', async () => {
     render(
       <MemoryRouter>
         <App />
